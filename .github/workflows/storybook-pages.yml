@@ -31,6 +31,10 @@ jobs:
       - name: Install Dependencies
         run: yarn install --immutable
 
+      # illustrations is imported by components but not declared as a dependency
+      - name: Build Illustrations
+        run: yarn workspaces foreach -R --topological-dev -p --from @momentum-design/illustrations run build
+
       - name: Build Components and Storybook
         run: yarn workspaces foreach -R --topological-dev -p --from @momentum-design/components run build
 
