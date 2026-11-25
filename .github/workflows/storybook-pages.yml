@@ -32,7 +32,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Build Components and Storybook
-        run: yarn components build
+        run: yarn workspaces foreach -R --topological-dev -p --from @momentum-design/components run build
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
